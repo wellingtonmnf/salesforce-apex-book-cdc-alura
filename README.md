@@ -1,3 +1,7 @@
+# Descrição
+
+Repositório dos arquivos utilizados na leitura do livro '[Salesforce APEX: Implemente soluções com padrões e técnicas de Orientação a Objetos](https://www.casadocodigo.com.br/products/livro-salesforce-apex?_pos=1&_sid=7b6206ffa&_ss=r)' do autor [Eduardo 'Bisso' Carvalho](https://www.linkedin.com/in/ercarval-bisso/). Objetivo: Aumentar o aprendizado de Apex Salesforce para uso profissional.
+
 # Salesforce DX Project: Next Steps
 
 Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.

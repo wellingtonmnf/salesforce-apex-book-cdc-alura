@@ -1,4 +1,4 @@
-Script de Testes - Parte 1
+Script de Testes - Capítulo 2
 
 
 NotaFiscal notaFiscal = new NotaFiscal();
@@ -36,5 +36,3 @@ pedido.adicionarItem(item);
 
 System.debug ('Total sem impostos: ' + pedido.getTotalLiquido());
 System.debug ('Total Geral: ' + pedido.getTotal());
-
-----------------------------------------------

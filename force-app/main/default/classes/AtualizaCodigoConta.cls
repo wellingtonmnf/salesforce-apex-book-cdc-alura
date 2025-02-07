@@ -12,14 +12,17 @@ public with sharing class AtualizaCodigoConta {
         if (response.getStatusCode() == 200) {
             
             Map<String,Object> jsonData = (Map<String,Object>)JSON.deserializeUntyped(response.getBody());
+            List<Account> accounts = new List<Account>();
 
             Account account = new Account();
            
             account.Name = (String) jsonData.get('Name');
-            account.DocumentNumber__c = (String) jsonData.get('DocumentNumber__c');
+            //account.DocumentNumber__c = (String) jsonData.get('DocumentNumber__c');
             account.ExternalId__c = (String) jsonData.get('ExternalId__c');
+            accounts.add(account);
 
-            upsert account ExternalId__c;
+            upsert accounts ExternalId__c;
+
 
         }
 

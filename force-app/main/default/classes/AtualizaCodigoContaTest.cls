@@ -11,12 +11,13 @@ private class AtualizaCodigoContaTest implements HttpCalloutMock {
         Test.stopTest();
 
         Account conta = [SELECT Name, ExternalId__c, DocumentNumber__c, CNAE__r.Code__c, BillingCity__r.IBGECode__c FROM Account WHERE ExternalId__c = '62132916012'];
-
+        
         System.assertEquals('Super Mega Cliente1', conta.Name);
         System.assertEquals('62132916012', conta.ExternalId__c);
         System.assertEquals('62132916012', conta.DocumentNumber__c);
-        System.assertEquals(2923392, conta.CNAE__r.Code__c);
-        System.assertEquals(5030857, conta.BillingCity__r.IBGECode__c);
+        System.assertEquals('2923392', conta.CNAE__r.Code__c);
+        System.assertEquals('5030857', conta.BillingCity__r.IBGECode__c);
+
     }
 
 

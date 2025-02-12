@@ -1,6 +1,12 @@
 @isTest
 private class AtualizaCodigoContaTest implements HttpCalloutMock {
-
+    
+    @TestSetup
+    static void makeData(){
+        insert new CNAE__c(Code__c = '2923392');
+        insert new City__c(IBGECode__c = '5030857');    
+    }
+    
     @isTest
     static void testSalvarConta() {
         
@@ -12,11 +18,11 @@ private class AtualizaCodigoContaTest implements HttpCalloutMock {
 
         Account conta = [SELECT Name, ExternalId__c, DocumentNumber__c, CNAE__r.Code__c, BillingCity__r.IBGECode__c FROM Account WHERE ExternalId__c = '62132916012'];
         
-        System.assertEquals('Super Mega Cliente1', conta.Name);
-        System.assertEquals('62132916012', conta.ExternalId__c);
-        System.assertEquals('62132916012', conta.DocumentNumber__c);
-        System.assertEquals('2923392', conta.CNAE__r.Code__c);
-        System.assertEquals('5030857', conta.BillingCity__r.IBGECode__c);
+        System.assertEquals('Super Mega Cliente1', conta.Name, 'Nome da conta corresponde');
+        System.assertEquals('62132916012', conta.ExternalId__c, 'ID Externo da conta corresponde');
+        System.assertEquals('62132916012', conta.DocumentNumber__c, 'CNPJ da conta corresponde');
+        System.assertEquals('2923392', conta.CNAE__r.Code__c, 'CNAE da conta corresponde');
+        System.assertEquals('5030857', conta.BillingCity__r.IBGECode__c, 'Código IBGE da conta corresponde');
 
     }
 

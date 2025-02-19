@@ -1,8 +1,10 @@
 @isTest
 private class PersonDocumentValidatorTest {
 
+    // Deve retornar false para CPF null ou vazio
     @isTest
-    public static void shouldReturnFalseForNullOrEmptyCPF() {
+    public static void shouldReturnFalseForNullOrEmptyCpf() {
+
         PersonDocumentValidator validator = new PersonDocumentValidator();
 
         System.assert(!validator.isCPF(null), 'CPF Nulo NÃO é válido');
@@ -12,7 +14,7 @@ private class PersonDocumentValidatorTest {
         
     }
 
-
+    // Deve remover caracteres de mascara (###.###.###-##)
     @isTest
     public static void shouldRemoveMaskChars(){
 
@@ -39,7 +41,7 @@ private class PersonDocumentValidatorTest {
         Boolean result = validator.isCPF(cpf);
 
         Assert.isFalse(result, 'CPF 111.444.777-XX NÃO é válido');
-
+        // Caractere "/" conta como alfanumético
         cpf = '111.444/777-11';
 
         Assert.isFalse(validator.isCPF(cpf), 'CPF 111.444/777-11 NÃO é válido');

@@ -3,11 +3,13 @@ public with sharing class Pedido {
     private Decimal total;
     private Decimal totalLiquido;
     private List<ItemPedido> itens;
+    String tipoPedido;
 
     public Pedido() {
         this.total = 0;
         this.totalLiquido = 0;
         this.itens = new List<ItemPedido>();
+        this.tipoPedido = null;
     }
 
     public void adicionarItem(ItemPedido item) {
@@ -22,5 +24,17 @@ public with sharing class Pedido {
 
     public Decimal getTotalLiquido() {
         return this.totalLiquido;
+    }
+
+    public Decimal calculaValorTaxa () {
+            
+        if (tipoPedido == 'SERVIÇO') {
+            return 0.2;
+        } else if ( tipoPedido == 'VENDA PADRÃO' ) {
+            return 0.1;
+        } 
+    
+        return 0;
+        
     }
 }

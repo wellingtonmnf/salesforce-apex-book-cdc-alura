@@ -1,4 +1,5 @@
 public with sharing class CompanyDocumentValidator {
+    
     public Boolean isCNPJ( String cnpj ) {
 
         if (String.isEmpty(cnpj)) return false;

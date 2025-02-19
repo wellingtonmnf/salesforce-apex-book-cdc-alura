@@ -3,15 +3,11 @@ public with sharing class ItemPedido {
     private Integer quantidade;
     private Decimal preco;
     private Decimal precoLiquido; 
-    private Decimal total; 
-    private Decimal totalLiquido;
 
     public ItemPedido() {
         this.quantidade = 0;
         this.preco = 0;
         this.precoLiquido = 0;
-        this.total = 0;
-        this.totalLiquido = 0;
     }
 
     public Integer getQuantidade() {
@@ -45,6 +41,5 @@ public with sharing class ItemPedido {
     public Decimal getTotalLiquido() {
         return this.precoLiquido * this.quantidade;
     }
-
 
 }

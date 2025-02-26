@@ -1,3 +1,6 @@
+/**
+ * @author eduardo.bisso - dev-builder
+ */
 public with sharing class ContractRepository {
     
     public List<Contract> findByIds (List<String> ids) {

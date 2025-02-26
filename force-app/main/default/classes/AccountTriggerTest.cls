@@ -1,3 +1,6 @@
+/**
+ * @author eduardo.bisso
+ */
 @isTest
 private class AccountTriggerTest {
 

@@ -1,6 +1,9 @@
+/**
+ * @author eduardo.bisso - dev-builder
+ */
 public with sharing class ContractFilter {
     
-    public List<Contract> byChangedToSignedStatus (List<Contract> newContracts, Map<Id,Contract> oldContracts){
+    public List<Contract> byChangedToAssignedStatus (List<Contract> newContracts, Map<Id,Contract> oldContracts){
 
         List<Contract> amendmentContracts = new List<Contract>();
 

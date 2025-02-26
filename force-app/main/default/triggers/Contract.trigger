@@ -1,10 +1,12 @@
 /**
  * @author eduardo.bisso - dev-builder
+ * modified by wellingtonmnf
+ * @since 2025-02-26
  */
 trigger Contract on Contract (after update) {
 
     // Determina quais registros foram atualizados.
-    // Coleção sempre no plural!
+    // Coleção sempre no plural.
     List<Contract> newContracts = Trigger.new;
     Map<Id, Contract> oldContracts = Trigger.oldMap;
 
@@ -17,7 +19,7 @@ trigger Contract on Contract (after update) {
 
             InactivateOriginalContractEnricher inactivateOriginalContract = new InactivateOriginalContractEnricher();
             
-            List<Contract> amendmentContracts = filter.byChangedToSignedStatus(newContracts, oldContracts);
+            List<Contract> amendmentContracts = filter.byChangedToAssignedStatus(newContracts, oldContracts);
 
             inactivateOriginalContract.inactivatedBy(amendmentContracts);
 

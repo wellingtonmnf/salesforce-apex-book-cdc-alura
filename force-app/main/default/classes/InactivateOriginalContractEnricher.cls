@@ -1,3 +1,6 @@
+/**
+ * @author eduardo.bisso - dev-builder
+ */
 public with sharing class InactivateOriginalContractEnricher {
     
     ContractRepository repository;
@@ -8,34 +11,34 @@ public with sharing class InactivateOriginalContractEnricher {
         this.filter = new ContractFilter();
     }
 
-    public List<Contract> inactivatedBy (List<Contract> signedContracts){
+    public List<Contract> inactivatedBy (List<Contract> assignedContracts){
 
-        List<Contract> originalContracts = findOriginalContracts(signedContracts);
+        List<Contract> originalContracts = findOriginalContracts(assignedContracts);
 
         if (originalContracts.isEmpty()) {
             return new List<Contract>();
         }
 
-        List<Contract> inactivatedContracts = inactivateOriginalContracts(originalContracts, signedContracts);
+        List<Contract> inactivatedContracts = inactivateOriginalContracts(originalContracts, assignedContracts);
 
         return repository.save(inactivatedContracts);
 
     }
 
-    private List<Contract> findOriginalContracts(List<Contract> signedContracts) {
+    private List<Contract> findOriginalContracts(List<Contract> assignedContracts) {
 
-        List<String> originalContractIds = filter.extractOriginalContractIds(signedContracts);
+        List<String> originalContractIds = filter.extractOriginalContractIds(assignedContracts);
 
         return repository.findByIds(originalContractIds);
     }
 
-    private List<Contract> inactivateOriginalContracts(List<Contract> originalContracts, List<Contract> signedContracts) {
+    private List<Contract> inactivateOriginalContracts(List<Contract> originalContracts, List<Contract> assignedContracts) {
 
         Map<Id,Contract> indexedOriginalContracts = this.filter.indexById(originalContracts);
 
-        for (Contract signedContract : signedContracts) {
+        for (Contract assignedContract : assignedContracts) {
             
-            Contract originalContract = indexedOriginalContracts.get(signedContract.OriginalContract__c);
+            Contract originalContract = indexedOriginalContracts.get(assignedContract.OriginalContract__c);
 
             originalContract.Status = 'Inativado';
         }
